@@ -4,6 +4,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import FrameState from "./FrameState";
 import ActivitiesState from "./ActivitiesState";
 import { Nunito } from "next/font/google";
+import { FabricJSEditor } from "fabricjs-react";
 
 const nunito = Nunito({
     subsets: ['latin-ext'],
@@ -15,10 +16,12 @@ type Tab = "frames" | "activities";
 
 const SlideSidebar = ({
     isOpen,
-    setIsOpen
+    setIsOpen,
+    editor
 }: {
     isOpen: boolean,
-    setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
+    setIsOpen: React.Dispatch<React.SetStateAction<boolean>>,
+    editor: FabricJSEditor | undefined
 }) => {
     const [activeTab, setActiveTab] = useState<Tab>("frames");
     const active = "border-b-blue-500 border-b-[2px]";
@@ -27,6 +30,12 @@ const SlideSidebar = ({
         frames: <FrameState />,
         activities: <ActivitiesState />
     } as Record<Tab, JSX.Element>;
+
+
+    const setAllModesOff = () => {
+        setIsOpen(false);
+        if (editor) editor.canvas.isDrawingMode = false;
+    };
 
     
     return (
@@ -48,7 +57,7 @@ const SlideSidebar = ({
                     </p>
                 </div>
                 <span className="px-2">
-                    <CloseIcon onClick={() => setIsOpen(false)} className="cursor-pointer hover:text-blue-600" />
+                    <CloseIcon onClick={() => setAllModesOff()} className="cursor-pointer hover:text-blue-600" />
                 </span>
             </div>
             {states[activeTab]}

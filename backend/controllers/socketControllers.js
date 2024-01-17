@@ -42,12 +42,12 @@ const boardHandler = (socket, io) => {
     const addCircle = ({ boardId, circle }) => {
         try {
             console.log('add circle', boardId, circle);
-            socket.to(boardId).emit('add-circle-broadcast', { circle });    
+            socket.to(boardId).emit('add-circle-broadcast', { circle });
         } catch (error) {
             console.log('Failed to add circle:', error);
         }
     };
-   
+
     socket.on('draw', drawHandler);
     socket.on('create-board', createBoard);
     socket.on('join-board', joinBoard);

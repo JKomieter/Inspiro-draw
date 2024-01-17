@@ -9,7 +9,7 @@ export const useShapes = (editor: FabricJSEditor | undefined, boardId: string | 
             radius: 50,
             borderColor: 'black',
             left: 500,
-            top: 500
+            top: 500,
         });
         editor?.canvas.add(circle);
         socket.emit('add-circle', { boardId, circle });
@@ -19,21 +19,26 @@ export const useShapes = (editor: FabricJSEditor | undefined, boardId: string | 
     const addRectangle = () => {
         const rect = new fabric.Rect({
             width: 200,
-            height:200,
+            height: 200,
             left: 300,
             top: 300,
+            fill: 'transparent',
             borderColor: 'black',
+            stroke: 'black',
+            strokeWidth: 2,
         });
         editor?.canvas.add(rect);
     }
 
     const addTriangle = () => {
         const triangle = new fabric.Triangle({
-            width: 100,
-            height: 100,
-            fill: 'green',
+            width: 150,
+            height: 150,
+            fill: 'transparent',
+            stroke: 'black',
+            strokeWidth: 2,
             left: 400,
-            top: 400
+            top: 400,            
         });
         editor?.canvas.add(triangle);
     }
@@ -50,14 +55,16 @@ export const useShapes = (editor: FabricJSEditor | undefined, boardId: string | 
 
     const addPolygon = () => {
         const polygon = new fabric.Polygon([
-            { x: 185, y: 0 },
-            { x: 250, y: 100 },
-            { x: 385, y: 170 },
-            { x: 0, y: 245 }
+            { x: 0, y: 0 },
+            { x: 200, y: 0 },
+            { x: 100, y: 200 },
+            { x: 0, y: 100 }
         ], {
-            fill: 'yellow',
+            fill: 'transparent',
             left: 600,
-            top: 600
+            top: 600,
+            stroke: 'black',
+            strokeWidth: 2,
         });
         editor?.canvas.add(polygon);
     }
@@ -74,13 +81,13 @@ export const useShapes = (editor: FabricJSEditor | undefined, boardId: string | 
         console.log(editor);
         editor?.canvas.add(text);
     }
-    
+
 
     const addTextbox = (color: string) => {
         const textbox = new fabric.Textbox('Hello world', {
             left: 500,
             top: 500,
-            width:200,
+            width: 200,
             height: 600,
             fontSize: 30,
             backgroundColor: color,

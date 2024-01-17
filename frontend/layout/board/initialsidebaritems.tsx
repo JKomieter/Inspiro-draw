@@ -8,21 +8,20 @@ import CommentIcon from '@mui/icons-material/Comment';
 import CropIcon from '@mui/icons-material/Crop';
 import IosShareIcon from '@mui/icons-material/IosShare';
 import AddBoxIcon from '@mui/icons-material/AddBox';
-import CropDinIcon from '@mui/icons-material/CropDin';
 import CropPortraitIcon from '@mui/icons-material/CropPortrait';
-import StarOutlineIcon from '@mui/icons-material/StarOutline';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import PanoramaHorizontalIcon from '@mui/icons-material/PanoramaHorizontal';
 import PanoramaWideAngleIcon from '@mui/icons-material/PanoramaWideAngle';
 import { Popover, PopoverContent, PopoverTrigger } from '@nextui-org/react';
 import { Nunito } from 'next/font/google';
-import { CircleIcon, TriangleIcon } from '@/utils/shapes';
+import { CircleIcon, PolygonIcon, RectIcon, TriangleIcon } from '@/utils/shapes';
 import { CurvedLineIcon, DirectionalLineIcon, StraightArrowIcon, StraightLineIcon } from '@/utils/lines';
 import { AddTextIcon, StickyNoteIcon } from '@/utils/useText';
 import { Divider } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { Eraser, Highlighter, Lasso, Smart_Draw, Thickness } from '@/svgs/index.svg';
+import ModeStandbyIcon from '@mui/icons-material/ModeStandby';
 import { PenIcon } from '@/utils/draw';
 
 
@@ -34,7 +33,7 @@ const nunito = Nunito({
 
 const shapes = [
     {
-        icon: <CropDinIcon />,
+        icon: <RectIcon />,
         name: 'Rectangle'
     },
     {
@@ -50,8 +49,8 @@ const shapes = [
         name: 'Line'
     },
     {
-        icon: <StarOutlineIcon />,
-        name: 'Star'
+        icon: <PolygonIcon />,
+        name: 'Polygon'
     },
     {
         icon: <ChatBubbleOutlineIcon />,
@@ -189,7 +188,7 @@ export const items = [
                             shapes.map((shape) => (
                                 <div
                                     key={shape.name}
-                                    className="rounded-md p-2 hover:bg-[#fed2cf] duration-200 cursor-pointer m-0.5">
+                                    className="rounded-md p-2 hover:bg-[#fed2cf] duration-200 cursor-pointer m-0.5 flex items-center justify-center">
                                     {shape.icon}
                                 </div>
                             ))
@@ -253,7 +252,7 @@ export const items = [
                         <Thickness className="w-[27px] h-[27px]" />
                     </span>
                     <span className='p-2 duration-200 cursor-pointer'>
-                        <Thickness className="w-[27px] h-[27px]" />
+                        <ModeStandbyIcon fontSize='large' className="w-[30px] h-[30px]" />
                     </span>
                     <span className='p-2 duration-200 cursor-pointer'>
                         <Thickness className="w-[27px] h-[27px]" />
